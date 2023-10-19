@@ -3,7 +3,15 @@ import { Link } from "react-router-dom";
 import { FiMapPin, FiPhone } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
 
-const AddressItem = ({ name, address, phoneNumber, email, id }) => {
+const AddressItem = ({
+  name,
+  address,
+  phoneNumber,
+  email,
+  id,
+  province,
+  district,
+}) => {
   return (
     <div>
       <div className="relative">
@@ -14,7 +22,9 @@ const AddressItem = ({ name, address, phoneNumber, email, id }) => {
           <FiMapPin />
           <span>Địa chỉ</span>
         </div>
-        <div className="mb-3 text-[15px] text-[#333] text-[500]">{address}</div>
+        <div className="mb-3 text-[15px] text-[#333] text-[500]">
+          {address}, {district}, {province}
+        </div>
         <div className="flex items-center gap-2 mb-1 text-gray-400 text-[14px]">
           <FiPhone />
           <span>Số điện thoại</span>

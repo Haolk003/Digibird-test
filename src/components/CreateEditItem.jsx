@@ -45,6 +45,7 @@ const CreateEditItem = ({ isEdit }) => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(AddressSchema),
@@ -82,6 +83,9 @@ const CreateEditItem = ({ isEdit }) => {
         country: "VN",
         shipping_address: data.address,
       });
+      reset();
+      setDictrictSelect("");
+      setProvinceSelect("");
     }
   };
 
@@ -198,7 +202,6 @@ const CreateEditItem = ({ isEdit }) => {
             </div>
             <div className="mb-3">
               <Select
-                select
                 name={provinceName}
                 error={errors.province ? true : false}
                 size="small"

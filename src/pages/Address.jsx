@@ -37,6 +37,8 @@ function Address() {
               >
                 <AddressItem
                   id={item.xid}
+                  district={item.state}
+                  province={item.city}
                   address={item.address}
                   email={item.email}
                   name={item.name}
