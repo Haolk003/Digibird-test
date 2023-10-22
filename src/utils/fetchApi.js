@@ -19,6 +19,7 @@ api.interceptors.response.use(
   async (error) => {
     // Lấy lại đã hết hạn và gắn vào lại localstorage với lỗi là  UNAUTHORIZED EXCEPTION
     if (error.response?.data?.error?.message === "UNAUTHORIZED EXCEPTION") {
+      console.log("a");
       try {
         //thêm data vào x-www-form-urlencoded
         const params = new URLSearchParams();
@@ -33,9 +34,10 @@ api.interceptors.response.use(
             headers: { "content-type": "application/x-www-form-urlencoded" },
           }
         );
+
         const data = response.data.data;
         //set lại vào localstorage
-        localStorage.setItem("token", JSON.stringify(data.data.token));
+        localStorage.setItem("token", JSON.stringify(data.token));
         // refesh lại api vừa mới gọi
         return api({
           url: error.config.url,
